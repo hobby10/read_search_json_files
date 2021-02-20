@@ -1,4 +1,5 @@
 - To run project follow these steps please:
+    + composer install
     + cp .env.example .env
     + php artisan key:generate
     + ./vendor/bin/sail build
