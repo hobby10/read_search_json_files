@@ -4,7 +4,8 @@
     + php artisan key:generate
     + ./vendor/bin/sail build
     + ./vendor/bin/sail up
-    + ./vendor/bin/sail artisan command:read_provider_files_data        //to read and cache json files
+    + ./vendor/bin/sail artisan queue:work     (on the server, we must run the supervisor)
+    + ./vendor/bin/sail artisan command:read_provider_files_data        //run command to read and cache json files
 
 
 - To review task configurations review (config/data_providers.php file)
