@@ -14,6 +14,15 @@ class UserController extends Controller {
         // if data doesn't cache yet, dispatch the job to read and cache files data
         if (!empty(array_keys(config('data_providers.providers_searchable_keys'))) && !\Illuminate\Support\Facades\Cache::has('users.' . array_keys(config('data_providers.providers_searchable_keys'))[0])) {
             \App\Jobs\ReadProviderFilesData::dispatch();
+            
+            if ((!\App::runningUnitTests())) {
+                return response()->json(
+                                [
+                                    'status' => true,
+                                    'message' => __('we loading data, please retry after a while.')
+                                ], 200
+                );
+            }
         }
 
         // call search service

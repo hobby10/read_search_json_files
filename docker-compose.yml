@@ -29,20 +29,6 @@ services:
             - sail
         healthcheck:
           test: ["CMD", "redis-cli", "ping"]
-    queue:
-        image: laravel-www
-        container_name: laravel-queue
-        depends_on:
-          - app
-        volumes:
-          - .:/var/www/html
-#        environment:
-#          APP_ENV: local
-#          CONTAINER_ROLE: queue
-#          CACHE_DRIVER: redis
-#          SESSION_DRIVER: redis
-#          QUEUE_DRIVER: redis
-#          REDIS_HOST: redis
 networks:
     sail:
         driver: bridge
