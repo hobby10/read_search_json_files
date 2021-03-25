@@ -31,14 +31,16 @@ class ReadDataProvidersService {
         try {
             $parser = new \JsonStreamingParser\Parser($stream, $listener);
             $parser->parse();
+
+
             fclose($stream);
         } catch (Exception $e) {
             fclose($stream);
             throw $e;
         }
 
-      // use lazy collection
-      $json_data = collect($listener->getJson())->lazy();
+        // use lazy collection
+        $json_data = collect($listener->getJson())->lazy();
 //        $json_data = collect($listener->getJson());
 
         return $json_data;
